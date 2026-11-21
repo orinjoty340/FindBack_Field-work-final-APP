@@ -1,0 +1,103 @@
+import { DarkTheme, DefaultTheme, type Theme } from 'expo-router/react-navigation';
+
+export const THEME = {
+  light: {
+    background: 'hsl(212 39% 94%)',
+    foreground: 'hsl(220 26% 14%)',
+    card: 'hsl(0 0% 100%)',
+    cardForeground: 'hsl(220 26% 14%)',
+    popover: 'hsl(0 0% 100%)',
+    popoverForeground: 'hsl(220 26% 14%)',
+    primary: 'hsl(214 52% 25%)',
+    primaryForeground: 'hsl(0 0% 100%)',
+    secondary: 'hsl(212 37% 90%)',
+    secondaryForeground: 'hsl(214 52% 25%)',
+    muted: 'hsl(212 37% 90%)',
+    mutedForeground: 'hsl(215 16% 47%)',
+    accent: 'hsl(212 46% 89%)',
+    accentForeground: 'hsl(214 52% 25%)',
+    destructive: 'hsl(0 74% 42%)',
+    border: 'hsl(213 31% 87%)',
+    input: 'hsl(213 27% 84%)',
+    ring: 'hsl(210 50% 37%)',
+    radius: '0.75rem',
+    gold: 'hsl(38 56% 51%)',
+    success: 'hsl(142 72% 29%)',
+    warning: 'hsl(26 90% 37%)',
+    chart1: 'hsl(214 52% 25%)',
+    chart2: 'hsl(210 50% 37%)',
+    chart3: 'hsl(38 56% 51%)',
+    chart4: 'hsl(142 72% 29%)',
+    chart5: 'hsl(215 16% 47%)',
+  },
+  dark: {
+    background: 'hsl(220 49% 8%)',
+    foreground: 'hsl(217 33% 92%)',
+    card: 'hsl(220 42% 13%)',
+    cardForeground: 'hsl(217 33% 92%)',
+    popover: 'hsl(220 42% 13%)',
+    popoverForeground: 'hsl(217 33% 92%)',
+    primary: 'hsl(213 51% 67%)',
+    primaryForeground: 'hsl(220 49% 8%)',
+    secondary: 'hsl(221 41% 18%)',
+    secondaryForeground: 'hsl(217 33% 92%)',
+    muted: 'hsl(221 41% 18%)',
+    mutedForeground: 'hsl(215 20% 65%)',
+    accent: 'hsl(220 42% 20%)',
+    accentForeground: 'hsl(217 33% 92%)',
+    destructive: 'hsl(0 84% 60%)',
+    border: 'hsl(220 39% 23%)',
+    input: 'hsl(221 37% 26%)',
+    ring: 'hsl(213 50% 57%)',
+    radius: '0.75rem',
+    gold: 'hsl(39 65% 58%)',
+    success: 'hsl(142 69% 58%)',
+    warning: 'hsl(38 92% 50%)',
+    chart1: 'hsl(213 51% 67%)',
+    chart2: 'hsl(210 50% 50%)',
+    chart3: 'hsl(39 65% 58%)',
+    chart4: 'hsl(142 69% 58%)',
+    chart5: 'hsl(215 20% 65%)',
+  },
+};
+
+export const NAV_THEME: Record<'light' | 'dark', Theme> = {
+  light: {
+    ...DefaultTheme,
+    colors: {
+      background: THEME.light.background,
+      border: THEME.light.border,
+      card: THEME.light.card,
+      notification: THEME.light.destructive,
+      primary: THEME.light.primary,
+      text: THEME.light.foreground,
+    },
+  },
+  dark: {
+    ...DarkTheme,
+    colors: {
+      background: THEME.dark.background,
+      border: THEME.dark.border,
+      card: THEME.dark.card,
+      notification: THEME.dark.destructive,
+      primary: THEME.dark.primary,
+      text: THEME.dark.foreground,
+    },
+  },
+};
+
+export const COLORS = {
+  primary: '#1E3A5F', // navy: heading, footer button
+  olive: '#2F5D8C', // accent: badge, link text, unread dot (ager nam olive, ekhon blue)
+  oliveLight: '#E3ECF7', // unread card background
+  surface: '#FFFFFF',
+  background: '#E8EEF5',
+  border: '#D5DEE9',
+  text: '#1A202C',
+  muted: '#64748B',
+  white: '#FFFFFF',
+  gold: '#C8963E',
+  danger: '#B91C1C',
+  success: '#15803D',
+  warning: '#B45309',
+};
