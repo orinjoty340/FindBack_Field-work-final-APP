@@ -434,8 +434,39 @@ app.post(
       }
 
       // Upload image to Cloudinary if provided
+            // Upload image to Cloudinary if provided
       if (req.file) {
-        uploadedImage = await uploadToCloudinary(req.file.buffer);
+        const cloudinaryReady =
+          process.env.CLOUDINARY_CLOUD_NAME &&
+          process.env.CLOUDINARY_API_KEY &&
+          process.env.CLOUDINARY_API_SECRET;
+
+        if (!cloudinaryReady) {
+          console.error(
+            'Image upload skipped: Cloudinary env variables are not set on this server'
+          );
+
+          return res.status(503).json({
+            success: false,
+            message:
+              'Image upload is not configured on the server. Please submit without an image.',
+          });
+        }
+
+        try {
+          uploadedImage = await uploadToCloudinary(req.file.buffer);
+        } catch (uploadError) {
+          console.error(
+            'Cloudinary upload error:',
+            uploadError && (uploadError.message || uploadError.error || uploadError)
+          );
+
+          return res.status(502).json({
+            success: false,
+            message:
+              'Image upload failed. Please try again or submit without an image.',
+          });
+        }
       }
 
       const report = await Report.create({
