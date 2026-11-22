@@ -1,3 +1,4 @@
+
 import { Icon } from '@/components/ui/icon';
 import {
   loadThemePreference,
@@ -17,28 +18,41 @@ const LABEL: Record<ThemePreference, string> = {
   dark: 'Dark theme',
 };
 
-const ICON = { system: Monitor, light: Sun, dark: Moon } as const;
+const ICON = {
+  system: Monitor,
+  light: Sun,
+  dark: Moon,
+} as const;
 
-/** Cycles System → Light → Dark and remembers the choice. */
 export function ThemeToggle() {
   const { setColorScheme } = useColorScheme();
-  const [preference, setPreference] = useState<ThemePreference>('system');
+
+  const [preference, setPreference] =
+    useState<ThemePreference>('system');
 
   useEffect(() => {
     let active = true;
+
     loadThemePreference().then((value) => {
-      if (active) setPreference(value);
+      if (active) {
+        setPreference(value);
+        setColorScheme(value);
+      }
     });
+
     return () => {
       active = false;
     };
-  }, []);
+  }, [setColorScheme]);
 
-  const cycle = () => {
-    const next = ORDER[(ORDER.indexOf(preference) + 1) % ORDER.length];
+  const cycle = async () => {
+    const currentIndex = ORDER.indexOf(preference);
+    const next =
+      ORDER[(currentIndex + 1) % ORDER.length];
+
     setPreference(next);
     setColorScheme(next);
-    saveThemePreference(next);
+    await saveThemePreference(next);
   };
 
   return (
@@ -49,7 +63,11 @@ export function ThemeToggle() {
       accessibilityLabel={`${LABEL[preference]}. Tap to change.`}
       className="border-border bg-card h-11 w-11 items-center justify-center rounded-xl border shadow-sm shadow-primary/10 active:opacity-80"
     >
-      <Icon as={ICON[preference]} size={19} className="text-primary" />
+      <Icon
+        as={ICON[preference]}
+        size={19}
+        className="text-primary"
+      />
     </Pressable>
   );
 }

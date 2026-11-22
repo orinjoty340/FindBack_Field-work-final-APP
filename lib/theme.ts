@@ -60,6 +60,7 @@ export const THEME = {
     chart5: 'hsl(215 20% 65%)',
   },
 };
+export const NAV_THEME: Record<'light' | 'dark', Theme> = {
 
 export const NAV_THEME: Record<'light' | 'dark', Theme> = {
   light: {
