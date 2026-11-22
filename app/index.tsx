@@ -9,23 +9,20 @@ import { Icon } from '@/components/ui/icon';
 import { Input } from '@/components/ui/input';
 import { Text } from '@/components/ui/text';
 import { C } from '@/lib/palette';
+import { CATEGORIES } from '@/lib/categories';
 import { useColors } from '@/lib/useColors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect, useRouter } from 'expo-router';
 import {
-  Backpack,
   CalendarDays,
   ClipboardList,
-  KeyRound,
   LogOut,
   MapPin,
   Package,
   Plus,
   RefreshCw,
   Search,
-  Smartphone,
   Users,
-  Wallet,
   type LucideIcon,
 } from 'lucide-react-native';
 import { useCallback, useState, type ReactNode } from 'react';
@@ -56,13 +53,7 @@ type Report = {
   createdAt?: string;
 };
 
-const categories: { icon: LucideIcon; name: string }[] = [
-  { icon: Backpack, name: 'Bags' },
-  { icon: Smartphone, name: 'Electronics' },
-  { icon: KeyRound, name: 'Keys' },
-  { icon: Wallet, name: 'Wallets' },
-  { icon: Package, name: 'Other' },
-];
+const categories = CATEGORIES;
 
 const steps = [
   { number: '1', title: 'Report an item', desc: 'Share what you lost or found.' },
@@ -139,14 +130,12 @@ function QuickAction({
 function ReportCard({ report }: { report: Report }) {
   return (
     <View className="border-border bg-card rounded-2xl border p-3 shadow-sm shadow-primary/10">
-      {/* Item image: tap to open the full-size preview */}
       {report.imageUrl ? (
         <View className="mb-3">
           <ReportImage uri={report.imageUrl} title={report.itemName} />
         </View>
       ) : null}
 
-      {/* Report type and date */}
       <View className="mb-3 flex-row items-center justify-between">
         <TypeBadge type={report.type} />
 
@@ -428,7 +417,6 @@ export default function HomeScreen() {
             belongings return to their owners.
           </Text>
 
-          {/* Compact subtle purple report button */}
           <Button
             variant="default"
             size="sm"
@@ -605,7 +593,7 @@ export default function HomeScreen() {
           )}
         </View>
 
-        {/* Compact Browse Categories */}
+        {/* Browse Categories */}
         <View className="gap-3">
           <SectionTitle title="Browse categories" />
 
