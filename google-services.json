@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "898075651913",
+    "project_id": "findback-b33ef",
+    "storage_bucket": "findback-b33ef.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:898075651913:android:32b8bf44a56a19aeef3498",
+        "android_client_info": {
+          "package_name": "com.findback.lostandfound"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBKYIiP-fl3muGvdg8b36Fj89mcAW8FWW8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
