@@ -62,8 +62,7 @@ export const THEME = {
 };
 export const NAV_THEME: Record<'light' | 'dark', Theme> = {
 
-export const NAV_THEME: Record<'light' | 'dark', Theme> = {
-  light: {
+light: {
     ...DefaultTheme,
     colors: {
       background: THEME.light.background,
