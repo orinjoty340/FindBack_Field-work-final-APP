@@ -1,3 +1,4 @@
+﻿import { CATEGORIES } from '@/lib/categories';
 
 import { FormField } from '@/components/FormField';
 import { FormMessage } from '@/components/FormMessage';
@@ -47,7 +48,7 @@ const ALLOWED_IMAGE_TYPES = [
   'image/webp',
 ];
 
-const categories = ['Electronics', 'Documents', 'Accessories', 'Pets', 'Other'];
+const categories = CATEGORIES.map((item) => item.name);
 
 function todayString() {
   const d = new Date();
@@ -611,7 +612,7 @@ export default function ReportScreen() {
                       Choose an image
                     </Text>
                     <Text className="text-muted-foreground text-xs">
-                      JPG, PNG or WEBP · Maximum 5 MB
+                      JPG, PNG or WEBP Â· Maximum 5 MB
                     </Text>
                   </View>
                 </Pressable>
@@ -654,3 +655,4 @@ export default function ReportScreen() {
     </KeyboardAvoidingView>
   );
 }
+
